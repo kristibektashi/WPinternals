@@ -21,7 +21,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
     <Deterministic>false</Deterministic>
-    <Platforms>AnyCPU;x86;x64;arm64</Platforms>
+    <Platforms>AnyCPU;x86;x64;arm64;ARM32</Platforms>
     <DefineConstants>TRACE;PREVIEW</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -305,6 +305,10 @@
     <None Update="app.manifest">
       <SubType>Designer</SubType>
     </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <AppDesigner Include="Properties\" />
     <EmbeddedResource Include="SB" />
     <EmbeddedResource Include="SBA" />
@@ -343,10 +347,18 @@
     <Folder Include="DiscUtils\DiscUtils.Core\CoreCompat\" />
     <Folder Include="DiscUtils\DiscUtils.Core\Internal\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
   <PropertyGroup>
     <PreBuildEvent>
       "C:\Program Files\PsTools\pskill.exe" XDesProc.exe 2&gt;nul 1&gt;nul
       EXIT 0
     </PreBuildEvent>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 </Project>
